@@ -11,29 +11,33 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
+  chkboxShow: boolean  = false;
+
   myContacts: Contact[] = [];
 
-  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController) { }
+  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController) { 
 
-  loadContacts() {
-    var options = {
-      filter: '',
-      multiple: true,
-      hasPhoneNumber: true
-    };
+    //load ctcts
+		    var options = {
+		      filter: '',
+		      multiple: true,
+		      hasPhoneNumber: true
+		    };
 
-    this.contacts.find(['*'], options).then((contacts: Contact[]) => {
-      this.myContacts = contacts;
-      //alert("success:");
+		    this.contacts.find(['*'], options).then((contacts: Contact[]) => {
+		      this.myContacts = contacts;
+		      //alert("success:");
 
-for (let entry of contacts){
-	alert(entry.displayName + "->" + entry.phoneNumbers[0].value);
-}
-
-
-
+		//for (let entry of contacts){
+			//alert(entry.displayName + "->" + entry.phoneNumbers[0].value);
+		//}
 
     });
+
+  }
+
+  loadContacts() {
+    
   }
 
   createContact() {
