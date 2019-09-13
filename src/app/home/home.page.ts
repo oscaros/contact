@@ -11,57 +11,74 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
-  chkboxShow: boolean  = false;
-
   myContacts: Contact[] = [];
+
+  //init vars
+  ContactList: any;
+  abc:any;
+  newArray:any;
+  checkBoxList:any;
+  data:any;
+  LoadingView: boolean = true;
+  data1: any;
+
+  data2: any;
 
   constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController) { 
 
     //load ctcts
+
+            //var fieldTypes: ContactFieldType[] = ["phoneNumbers", "displayName"];
 		    var options = {
 		      filter: '',
 		      multiple: true,
 		      hasPhoneNumber: true
 		    };
 
-		    this.contacts.find(['*'], options).then((contacts: Contact[]) => {
-		      this.myContacts = contacts;
-		      //alert("success:");
+		   // this.contacts.find(['*'], options).then((contacts: Contact[]) => {
+		    this.contacts.find(['displayName'], options).then((contacts: Contact[]) => {
+		    this.myContacts = contacts;
 
-		//for (let entry of contacts){
-			//alert(entry.displayName + "->" + entry.phoneNumbers[0].value);
-		//}
+		    
+		    //let data1 =JSON.stringify({contacts})
+		    //let data2 =JSON.parse({data1})
+		    //alert(data2['phoneNumbers[0].value']);
 
+		   
+
+		    
     });
 
   }
 
-  loadContacts() {
-    
+  loadContactsFromOnline() {
+/*
+  //iterate through those contacts which are from online and add an isCheckedFlag
+
+	       this.http.get('http://xxxx.com/xxxxxx/xxxx/getAllContact.php')
+	            .map(res => res.json())
+	            .subscribe(data => {
+	                    this.abc=data.ContactList;
+		        }),
+		    err => {
+		        console.log("Oops!");
+		    } 
+
+    	for (let entry of ContactList){
+			
+			this.checkBoxList = [
+							      {
+							        value:"entry.phoneNumbers[0].value",
+							        isChecked:false
+							      }
+							   ];
+		} */
   }
 
-  createContact() {
-    let contact: Contact = this.contacts.create();
 
-    contact.name = new ContactName(null, 'Albus', 'Ape');
-    contact.phoneNumbers = [ new ContactField('mobile', '12345678') ];
-    contact.save().then(
-      async () => {
-        let toast = await this.toastCtrl.create({
-          message: 'Contact added!'
-        });
-        toast.present();
-      },
-      (error: any) => console.error('Error saving contact.', error)
-    );
+  combineContactsAndDisplay() {
+
   }
 
-  sendSms(contact: Contact) {
-    this.sms.send(contact.phoneNumbers[ 0 ].value, 'This is my predefined message to you!');
-  }
-
-  call(contact: Contact) {
-    this.callNumber.callNumber(contact.phoneNumbers[ 0 ].value, true);
-  }
 
 }

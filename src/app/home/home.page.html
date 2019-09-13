@@ -9,19 +9,32 @@
 <ion-content>
   <!-- <ion-button (click)="loadContacts()" expand="full">Load Contacts</ion-button>
   <ion-button (click)="createContact()" expand="full">Create Contact</ion-button> -->
+<!-- show some spinner -->
+<!-- <ion-spinner ng-show="LoadingView" icon="spiral"></ion-spinner>
+<div ng-show="!LoadingView" icon="spiral"></div> -->
 
+
+ <ion-list>
+    <ion-item>
+      <ion-label><strong>Select All</strong></ion-label>
+      <ion-checkbox slot="start" 
+      [(ngModel)]="masterCheck"
+      [indeterminate]="isIndeterminate"
+        (click)="checkMaster($event)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
   <ion-list>
     <ion-item-sliding *ngFor="let c of myContacts">
       <ion-item>
         <ion-label>{{ c.name.givenName }} <b>{{ c.name.familyName }}</b>
           <p>
             {{ c.phoneNumbers[ 0 ].value }}
+            <!-- {{LoadingView=false}} -->
           </p>
         </ion-label>
-        <ion-checkbox [ngIf]="chkboxShow" slot="end" [(ngModel)]="c.isChecked"></ion-checkbox>
+        <ion-checkbox slot="end" [(ngModel)]="c.isChecked"></ion-checkbox>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
-
 </ion-content>
 
