@@ -31,21 +31,23 @@ export class HomePage {
 
             //var fieldTypes: ContactFieldType[] = ["phoneNumbers", "displayName"];
 		    var options = {
-		      fields: ['displayName', 'name' , 'emails', 'addresses'],
+		      fields: ['displayName', 'name' , 'emails', 'addresses', 'phoneNumbers[0].value'],
 		      filter: '',
 		      multiple: true,
 		      hasPhoneNumber: true
 		    };
 
 		   //this.contacts.find(['*'], options).then((contacts: Contact[]) => {
-		    this.contacts.find(['displayName', 'name' , 'emails', 'addresses'], options).then((contacts: Contact[]) => {
+		    this.contacts.find(['displayName', 'name' , 'emails', 'addresses', 'phoneNumbers'], options).then((contacts: Contact[]) => {
 		    this.myContacts = contacts;
 
 		    
 		    //let data1 =JSON.stringify({contacts})
 		    //let data2 =JSON.parse({data1})
 		    //alert(data2['phoneNumbers[0].value']);
-		      alert(JSON.stringify(contacts[0]));
+		    for (let i in contacts) {
+		     alert(JSON.stringify({Name: contacts[i].displayName, Number: contacts[i].phoneNumbers[0].value}));
+		    }
 		    
     });
 
