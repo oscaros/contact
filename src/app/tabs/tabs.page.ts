@@ -15,7 +15,7 @@ export class TabsPage implements OnInit {
   ngOnInit() {
   }
 
-    tab1Root = 'ReclamationsPage';
+    tab1Root = 'HomePage';
     tab2Root = 'HomePage';
     myIndex: number;
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Contacts, Contact, ContactName, ContactField } from '@ionic-native/contacts/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Nav } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +25,7 @@ export class HomePage {
 
   data2: any;
 
-  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController) { 
+  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController, public navCtrl: Nav) { 
 
     //load ctcts
 
@@ -80,6 +80,10 @@ export class HomePage {
   combineContactsAndDisplay() {
 
   }
+
+  go(){
+ this.navCtrl.push('TabsPage');
+ }
 
 
 }
