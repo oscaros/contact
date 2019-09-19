@@ -45,10 +45,9 @@ export class HomePage {
 		    //let data1 =JSON.stringify({contacts})
 		    //let data2 =JSON.parse({data1})
 		    //alert(data2['phoneNumbers[0].value']);
-		    for (let i in contacts) {
-		     alert(JSON.stringify({Name: contacts[i].displayName, Number: contacts[i].phoneNumbers[0].value}));
-		    }
-		    
+		    //for (let i in contacts) {
+		     //alert(JSON.stringify({Name: contacts[i].displayName, Number: contacts[i].phoneNumbers[0].value}));
+		   // }		    
     });
 
   }

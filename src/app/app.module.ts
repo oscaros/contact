@@ -13,6 +13,9 @@ import { Contacts } from '@ionic-native/contacts/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
 
+import { TabsPageRoutingModule } from './tabs/tabs.router.module';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,7 +26,8 @@ import { SMS } from '@ionic-native/sms/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Contacts,
     CallNumber,
-    SMS
+    SMS,
+    TabsPageRoutingModule
   ],
   bootstrap: [AppComponent]
 })
